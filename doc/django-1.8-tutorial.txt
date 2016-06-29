@@ -1,0 +1,1 @@
+http://python.usyiyi.cn/django/intro/tutorial01.html

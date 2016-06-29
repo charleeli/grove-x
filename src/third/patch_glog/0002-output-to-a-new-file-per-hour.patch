@@ -1,0 +1,79 @@
+From 2065b9ce1e936d0c2e475b00a0beb7e9667b5bd1 Mon Sep 17 00:00:00 2001
+From: Yvan <yvan@meilapp.com>
+Date: Wed, 21 Oct 2015 18:25:23 +0800
+Subject: [PATCH] output to a new file per hour.
+
+---
+ src/logging.cc | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/src/logging.cc b/src/logging.cc
+index 9d57ebb..187f997 100644
+--- a/src/logging.cc
++++ b/src/logging.cc
+@@ -434,11 +434,14 @@ class LogFileObject : public base::Logger {
+   uint32 file_length_;
+   unsigned int rollover_attempt_;
+   int64 next_flush_time_;         // cycle count at which to flush log
++  int32 current_hour_;
+ 
+   // Actually create a logfile using the value of base_filename_ and the
+   // supplied argument time_pid_string
+   // REQUIRES: lock_ is held
+   bool CreateLogfile(const string& time_pid_string);
++
++  bool HourHasChanged();
+ };
+ 
+ }  // namespace
+@@ -831,7 +834,8 @@ LogFileObject::LogFileObject(LogSeverity severity,
+     bytes_since_flush_(0),
+     file_length_(0),
+     rollover_attempt_(kRolloverAttemptFrequency-1),
+-    next_flush_time_(0) {
++    next_flush_time_(0),
++    current_hour_(-1) {
+   assert(severity >= 0);
+   assert(severity < NUM_SEVERITIES);
+ }
+@@ -844,6 +848,18 @@ LogFileObject::~LogFileObject() {
+   }
+ }
+ 
++bool LogFileObject::HourHasChanged()
++{
++    time_t timestamp = time(NULL);
++    struct tm tm_time;
++    localtime_r(&timestamp, &tm_time);
++    if (tm_time.tm_hour != current_hour_) {
++        current_hour_ = tm_time.tm_hour;
++        return true;
++    }
++    return false;
++}
++
+ void LogFileObject::SetBasename(const char* basename) {
+   MutexLock l(&lock_);
+   base_filename_selected_ = true;
+@@ -896,7 +912,8 @@ bool LogFileObject::CreateLogfile(const string& time_pid_string) {
+   string string_filename = base_filename_+filename_extension_+
+                            time_pid_string+".log";
+   const char* filename = string_filename.c_str();
+-  int fd = open(filename, O_WRONLY | O_CREAT | O_EXCL, 0664);
++  //int fd = open(filename, O_WRONLY | O_CREAT | O_EXCL, 0664);
++  int fd = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0664);
+   if (fd == -1) return false;
+ #ifdef HAVE_FCNTL
+   // Mark the file close-on-exec. We don't really care if this fails
+@@ -963,7 +980,7 @@ void LogFileObject::Write(bool force_flush,
+   }
+ 
+   if (static_cast<int>(file_length_ >> 20) >= MaxLogSize() ||
+-      PidHasChanged()) {
++      PidHasChanged() || HourHasChanged()) {
+     if (file_ != NULL) fclose(file_);
+     file_ = NULL;
+     file_length_ = bytes_since_flush_ = 0;
+-- 
+1.9.1
+

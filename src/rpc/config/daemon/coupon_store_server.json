@@ -1,0 +1,35 @@
+{
+    "coupon_redis_server": {
+        "ip": "172.18.5.62",
+        "port": 6380,
+        "timeout":500
+    },
+    
+    "coupon_mysql_server": {
+        "ip": "172.18.5.62",
+        "port": 3309,
+        "user":"root",
+        "password":"",
+        "dbname":"ecsite"
+    },
+
+    "coupon_log_path" : {
+        "path": "/data/deploy/logs/"
+    },
+
+    "coupon_push_server" : {
+        "port": 19000,
+        "ioThreadsNum":1,
+        "taskThreadsNum":2
+    },
+
+    "coupon_ec_server" : {
+        "port": 19001,
+        "ioThreadsNum":2,
+        "taskThreadsNum":8
+    },
+
+    "coupon_admin_server" : {
+        "port": 19002
+    }
+}

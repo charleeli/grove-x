@@ -1,0 +1,17 @@
+<changelog xmlns="http://www.codesynthesis.com/xmlns/odb/changelog" database="mysql" version="1">
+  <model version="1">
+    <table name="person" options="ENGINE=InnoDB" kind="object">
+      <column name="id" type="BIGINT UNSIGNED" null="false"/>
+      <column name="version" type="BIGINT UNSIGNED" null="false"/>
+      <column name="first" type="TEXT" null="false"/>
+      <column name="last" type="TEXT" null="false" default="''"/>
+      <column name="age" type="SMALLINT UNSIGNED" null="false"/>
+      <column name="middle_name" type="TEXT" null="true"/>
+      <column name="created_time" type="TIMESTAMP" null="false"/>
+      <column name="updated_time" type="DATETIME(6)" null="true"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+    </table>
+  </model>
+</changelog>

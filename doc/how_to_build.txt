@@ -1,0 +1,18 @@
+1. Compile.
+Under /src ，execute:
+$ ./build.sh
+Output files will be placed under /src/depends .
+
+
+2. Clean.
+Under /src , execute:
+$ ./build.sh clean
+or
+$ ./build.sh c
+
+
+3. Clean All.
+Under /src , execute:
+$ ./build.sh distclean
+or
+$ ./build.sh dc

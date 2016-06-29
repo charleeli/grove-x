@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin Platform</title>
+
+<style type="text/css">
+    html{font-size:12px;}
+    fieldset{width:520px; margin: 0 auto;}
+    legend{font-weight:bold; font-size:14px;}
+    label{float:left; width:70px; margin-left:10px;}
+    .left{margin-left:80px;}
+    .input{width:150px;}
+    span{color: #666666;}
+</style>
+
+<script language="javascript" type="text/javascript">
+function Button1_onclick() {
+var url = "http://127.0.0.1/admin_module.cgi?command=Login&username="
++username.value + "&password=" + password.value;
+window.location.href = url;
+}
+</script>
+
+</head>
+<body bgcolor="#6699FF">
+<div>
+<legend> Admin Platform</legend>
+<p>
+##errmsg##
+<p/>
+<p>
+<label for="44" class="label">User:</label>
+<input id="username" name="username" type="text" class="input" />
+<p/>
+<p>
+<label for="123" class="label">Password:</label>
+<input id="password" name="password" type="password" class="input" />
+<p/>
+<p>
+<input id="Button1" type="button" value="submit" onclick="return Button1_onclick()" />
+</p>
+</div>
+</body>
+</html>

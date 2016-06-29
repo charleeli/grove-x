@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <English name="name" value="value">The world has many languages</English>
+    <SimplifiedChinese name="名字" value="价值">世界有很多语言</SimplifiedChinese>
+</document>

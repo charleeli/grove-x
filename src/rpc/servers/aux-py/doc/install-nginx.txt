@@ -1,0 +1,25 @@
+1.安装nginx
+    wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.gz
+    wget http://zlib.net/zlib-1.2.8.tar.gz
+    wget http://nginx.org/download/nginx-1.9.9.tar.gz
+    
+    ./configure --with-stream && make && sudo make install
+
+2.部署nginx目录结构如下：
+/usr/local/nginx/
+                |--conf/
+                |       |--nginx.conf
+                |
+                |--sbin/
+                |       |--nginx
+
+3.启动nginx(先配置nginx.conf)
+    sudo mkdir -p /var/log/nginx/
+    touch /var/log/nginx/error.log
+
+    cd /usr/local/nginx/sbin
+    sudo ./nginx
+
+4.	telnet 127.0.0.1 12345
+	netstat -anp|grep 12345
+	netstat -anp|grep 19001
