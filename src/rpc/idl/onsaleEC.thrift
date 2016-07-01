@@ -2,7 +2,6 @@ include "onsale.thrift"
 
 namespace cpp onsaleEC
 namespace py onsaleEC
-namespace java com.meila.thrift.sdk.onsale.onsaleEC
 
 struct PriceInfo {                                                      //价格信息
     1: double market_price,                                             //市场价

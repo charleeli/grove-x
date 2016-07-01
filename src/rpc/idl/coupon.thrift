@@ -1,6 +1,5 @@
 namespace cpp coupon
 namespace py coupon
-namespace java com.meila.thrift.sdk.coupon.coupon
 
 struct DefaultConfig {                      //默认配置
     1: string default_jump_label,           //默认跳转类型

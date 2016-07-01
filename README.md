@@ -52,9 +52,3 @@ cd ./meila_rpc_cc/src/rpc/servers/coupon/
 valgrind ../../../depends/bin/coupon_ec_server
 sudo valgrind --log-file=memcheck_ec.log ../../../depends/bin/coupon_ec_server ../../config/daemon/coupon_store_server.json &
 ```
-
-mtrace
-```
-mtrace ../../../depends/bin/coupon_ec_server mtrace_ec.log
-```
-

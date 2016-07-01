@@ -1,6 +1,5 @@
 namespace cpp onsale
 namespace py onsale
-namespace java com.meila.thrift.sdk.onsale.onsale
 
 enum Error {                                //错误码
     OK = 0,                                 //成功

@@ -61,16 +61,6 @@ ExternalProject_Add(libcurl
 #    INSTALL_COMMAND    ${MAKE} install
     BUILD_IN_SOURCE    1
     )
-
-ExternalProject_Add(libmxml
-    DOWNLOAD_DIR       ${PROJECT_SOURCE_DIR}/download
-    URL                http://www.msweet.org/files/project3/mxml-2.9.tar.gz
-    URL_HASH           "MD5=e21cad0f7aacd18f942aa0568a8dee19"
-    CONFIGURE_COMMAND  ./configure --prefix=${CMAKE_INSTALL_PREFIX}
-    BUILD_COMMAND      ${MAKE}
-#    INSTALL_COMMAND    ${MAKE} install
-    BUILD_IN_SOURCE    1
-    )
     
 ExternalProject_Add(redlock
     DOWNLOAD_DIR       ${PROJECT_SOURCE_DIR}/download

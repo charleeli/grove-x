@@ -2,7 +2,6 @@ include "coupon.thrift"
 
 namespace cpp couponPush
 namespace py couponPush
-namespace java com.meila.thrift.sdk.coupon.couponPush
 
 struct PushInfo {                       //被推送的信息
     1: i64 user_id,                     //用户ID

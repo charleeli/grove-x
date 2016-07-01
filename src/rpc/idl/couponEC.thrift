@@ -2,7 +2,6 @@ include "coupon.thrift"
 
 namespace cpp couponEC
 namespace py couponEC
-namespace java com.meila.thrift.sdk.coupon.couponEC
 
 struct GetDefaultConfigReq {                                        //默认配置
     1: required bool dummy,                                         //哑字段,任意填写
