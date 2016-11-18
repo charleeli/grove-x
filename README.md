@@ -28,6 +28,9 @@ wget https://github.com/uglide/RedisDesktopManager/releases/download/0.8.3/redis
 
 Building from source
 ```
+git clone https://github.com/charleeli/grove-x.git
+cd ./grove-x
+
 1. Compile
 cd ./src
 ./build.sh
